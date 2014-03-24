@@ -21,6 +21,7 @@ set tags=%{tagsFile}
 :execute ":set tags=" . tagsFile
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 :nnoremap <F7> :make<CR>
+nnoremap <Leader>ff :<C-u>FufFile **/<CR> 
 
 "au BufReadPost fugitive://* set bufhidden=delete
 
