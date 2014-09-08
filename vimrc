@@ -14,8 +14,8 @@ set laststatus=2 "always display status line
 set nofoldenable    " disable folding
 
 
-let sourceDir = "/root/has"
-let tagsFile = "/root/tags"
+let sourceDir = "/root/code/has"
+let tagsFile = "/root/code/tags"
 set tags=%{tagsFile}
 :execute ":command Tags !ctags -R --c++-kinds=+p --fields=iaS --extra=+q -f " . tagsFile . " " . sourceDir
 :execute ":set tags=" . tagsFile
