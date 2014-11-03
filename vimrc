@@ -6,7 +6,7 @@ set expandtab
 set number
 set incsearch
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P,%{fugitive#statusline()}
-colorscheme guardian
+colorscheme desert 
 set smartcase
 set hidden
 set ic "case insensitive search
@@ -22,6 +22,7 @@ set tags=%{tagsFile}
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 :nnoremap <F7> :make<CR>
 nnoremap <Leader>ff :<C-u>FufFile **/<CR> 
+nmap <F8> :TagbarToggle<CR>
 
 "au BufReadPost fugitive://* set bufhidden=delete
 
@@ -33,3 +34,31 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
