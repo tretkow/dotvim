@@ -62,3 +62,16 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" the command
+command! -nargs=1 -complete=customlist,GoFilesComplete GoFile call GoFile(<f-args>)
+
+" the completion function
+function! GoFilesComplete(ArgLead, CmdLine, CursorPos)
+    return filter(go#tool#Files(), 'v:val =~ a:ArgLead')
+endfunction
+
+" the :edit wrapper
+function GoFile(file)
+    execute "edit " . a:file
+endfunction
