@@ -13,6 +13,7 @@ set hidden
 set ic "case insensitive search
 set laststatus=2 "always display status line
 set nofoldenable    " disable folding
+syntax on
 
 
 let sourceDir = "/root/code/has"
