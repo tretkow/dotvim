@@ -1,4 +1,5 @@
-execute pathogen#infect()
+call pathogen#infect()
+call pathogen#helptags()
 set smartindent
 set tabstop=4
 set shiftwidth=4
