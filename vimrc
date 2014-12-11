@@ -84,3 +84,6 @@ function GoFile(file)
     execute "edit " . a:file
 endfunction
 
+" nerd tree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <C-n> :NERDTreeToggle<CR>
