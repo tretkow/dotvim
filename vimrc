@@ -7,7 +7,7 @@ set expandtab
 set number
 set incsearch
 "set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P,%{fugitive#statusline()}
-"colorscheme desert 
+colorscheme molokai
 set smartcase
 set hidden
 set ic "case insensitive search
