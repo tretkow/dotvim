@@ -6,13 +6,16 @@ set shiftwidth=4
 set expandtab
 set number
 set incsearch
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P,%{fugitive#statusline()}
-colorscheme desert 
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P,%{fugitive#statusline()}
+"colorscheme desert 
 set smartcase
 set hidden
 set ic "case insensitive search
 set laststatus=2 "always display status line
 set nofoldenable    " disable folding
+set hlsearch
+set nocompatible
+set t_Co=256
 syntax on
 
 
@@ -25,6 +28,7 @@ set tags=%{tagsFile}
 :nnoremap <F7> :make<CR>
 nnoremap <Leader>ff :<C-u>FufFile **/<CR> 
 nmap <F8> :TagbarToggle<CR>
+nnoremap <Leader>jd :YcmCompleter GoTo<CR>
 
 "au BufReadPost fugitive://* set bufhidden=delete
 
@@ -36,6 +40,8 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+let g:airline#extensions#tabline#enabled = 1
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -77,3 +83,4 @@ endfunction
 function GoFile(file)
     execute "edit " . a:file
 endfunction
+
