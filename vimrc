@@ -18,17 +18,31 @@ set nocompatible
 set t_Co=256
 syntax on
 
+function CreateTags()
+    let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
+    let tagFile = curNodePath . '/tags'
+    exec ':!ctags -R --c++-kinds=+p --fields=iaS --extra=+q -f ' . tagFile . ' ' . curNodePath
+    execute "set tags=" . tagFile
+endfunction
 
-let sourceDir = "/root/code/has"
-let tagsFile = "/root/code/tags"
-set tags=%{tagsFile}
-:execute ":command Tags !ctags -R --c++-kinds=+p --fields=iaS --extra=+q -f " . tagsFile . " " . sourceDir
-:execute ":set tags=" . tagsFile
+function LoadTags()
+    let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
+    let tagFile = curNodePath . '/tags'
+    execute "set tags=" . tagFile
+endfunction
+
+:execute ":command Tags :call CreateTags()<CR>"
+nmap <silent> <F9> :call LoadTags()<CR>
+
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 :nnoremap <F7> :make<CR>
 nnoremap <Leader>ff :<C-u>FufFile **/<CR> 
 nmap <F8> :TagbarToggle<CR>
 nnoremap <Leader>jd :YcmCompleter GoTo<CR>
+nnoremap <C-k> :tabprevious<CR>
+nnoremap <C-j>   :tabnext<CR>
+nnoremap <C-i> :tabnew<CR>
+nnoremap <C-r> :tabclose<CR>
 
 "au BufReadPost fugitive://* set bufhidden=delete
 
@@ -41,7 +55,6 @@ let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
-let g:airline#extensions#tabline#enabled = 1
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -85,5 +98,24 @@ function GoFile(file)
 endfunction
 
 " nerd tree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <C-n> :NERDTreeToggle<CR>
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+" split resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
