@@ -16,6 +16,7 @@ set nofoldenable    " disable folding
 set hlsearch
 set nocompatible
 set t_Co=256
+set wildignore+=tags "do to search tags during vimgrep
 syntax on
 
 function CreateTags()
@@ -42,7 +43,7 @@ nnoremap <Leader>jd :YcmCompleter GoTo<CR>
 nnoremap <C-k> :tabprevious<CR>
 nnoremap <C-j>   :tabnext<CR>
 nnoremap <C-i> :tabnew<CR>
-nnoremap <C-r> :tabclose<CR>
+"nnoremap <C-r> :tabclose<CR>
 
 "au BufReadPost fugitive://* set bufhidden=delete
 
@@ -119,3 +120,5 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+imap jj <ESC> 
