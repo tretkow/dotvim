@@ -100,7 +100,8 @@ endfunction
 
 " nerd tree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
+map nn :NERDTreeToggle<CR>
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -122,3 +123,5 @@ nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 imap jj <ESC> 
+
+map ss :e $MYVIMRC<CR>
