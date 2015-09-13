@@ -16,6 +16,9 @@
 ## GoTags
     sudo su - -c "mkdir -p /opt/gotags && cd /opt/gotags/ && GOPATH=/opt/gotags go get -u github.com/jstemmer/gotags && ln -s /opt/gotags/bin/gotags /usr/bin"
 
+## Other dependencies
+    sudo apt-get install silversearcher-ag
+
 ## Help
     :helptags
 
