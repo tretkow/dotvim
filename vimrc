@@ -101,7 +101,6 @@ endfunction
 " nerd tree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <C-t> :NERDTreeToggle<CR>
-map nn :NERDTreeToggle<CR>
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
